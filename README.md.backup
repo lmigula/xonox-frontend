@@ -6,7 +6,7 @@ In June 2022, Noxon(tm) decided to discontinue the infrastructure-services for l
 - [`xonox` at PyPI](https://pypi.org/project/xonox)
 
 This is an early draft of an Web-Frontend to make configuration easier.
-![](res/screenshot.png)
+
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 14.0.3.
 

@@ -34,11 +34,7 @@ export class HomeComponent implements OnInit {
         console.log('stations', res);
 
         if (res && Array.isArray(res)) {
-          res.forEach(element => {
-            element = JSON.parse(element);
-            this.stations.push(element)
-
-          });
+          this.stations = res;
         }
         this.dataSource.data = this.stations;
         console.log('stations parsed  ', this.stations);

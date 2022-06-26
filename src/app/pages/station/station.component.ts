@@ -14,7 +14,7 @@ export class StationComponent implements OnInit {
   station: any;
   stationForm: FormGroup = this.formBuilder.group({
     name: ['', [Validators.required]],
-    stream: ['', [Validators.required]],
+    streamUrl: ['', [Validators.required]],
     description: ['',],
 
   });
@@ -37,7 +37,7 @@ export class StationComponent implements OnInit {
           this.stationId = params['stationId'];
           this.backendService.getStation(this.stationId)
             .subscribe((res: any) => {
-              this.station = JSON.parse(res);
+              this.station = res;
               console.log('this.station ', this.station);
 
               this.stationForm.disable({ emitEvent: false });
@@ -62,16 +62,10 @@ export class StationComponent implements OnInit {
 
   submit() {
     let station = this.stationForm.value;
-    console.log('station', station);
-    let newStation = {
-      streamUrl: station.stream,
-      name: station.name,
-      description: station.description
-    }
 
     //streamUrl
-    console.log('save', newStation);
-    this.backendService.createStation(newStation)
+    console.log('save', station);
+    this.backendService.createStation(station)
       .subscribe(res => {
         console.log('saveRes', res);
         this.router.navigate(['/home']);

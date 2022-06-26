@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { environment } from 'src/environments/environment';
 
 @Component({
   selector: 'app-about',
@@ -7,6 +8,9 @@ import { Component, OnInit } from '@angular/core';
 })
 export class AboutComponent implements OnInit {
 
+
+  version = environment.version;
+  build = environment.build
   constructor() { }
 
   ngOnInit(): void {

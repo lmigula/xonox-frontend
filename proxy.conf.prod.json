@@ -1,6 +1,6 @@
 {
     "/station": {
-        "target": "https://stoplight.io/mocks/x789/xonox/69522131/station",
+        "target": "http://gatekeeper.my-noxon.net/station",
         "secure": false,
         "logLevel": "debug",
         "changeOrigin": true,
