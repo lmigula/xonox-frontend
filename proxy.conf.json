@@ -1,0 +1,11 @@
+{
+    "/station": {
+        "target": "http://gatekeeper.my-noxon.net/station",
+        "secure": false,
+        "logLevel": "debug",
+        "changeOrigin": true,
+        "pathRewrite": {
+            "^/station": ""
+        }
+    }
+}

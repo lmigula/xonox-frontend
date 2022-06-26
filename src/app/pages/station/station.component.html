@@ -1,0 +1,43 @@
+<form (ngSubmit)="submit()" [formGroup]="stationForm" autocomplete="off">
+    <mat-card fxFill class="data-card" fxLayout="column">
+        <mat-card-header>
+            <mat-card-title>
+                <div fxLayout="row">
+                    <span fxFlex="initial" class="headerButtonSmall">Station
+
+
+                    </span>
+
+
+                </div>
+
+            </mat-card-title>
+        </mat-card-header>
+        <mat-card-content fxFlex fxLayout="column" fxLayoutGap="5px">
+
+            <div fxLayout="row" fxLayoutAlign="start center" fxLayoutGap="10px">
+                <mat-form-field fxFlex color="accent">
+                    <mat-label>Name</mat-label>
+                    <input matInput type="text" formControlName="name">
+                </mat-form-field>
+                <mat-form-field fxFlex color="accent">
+                    <mat-label>stream</mat-label>
+                    <input matInput type="text" formControlName="stream">
+                </mat-form-field>
+
+            </div>
+            <div fxLayout="row" fxLayoutAlign="start center" fxLayoutGap="10px">
+                <mat-form-field fxFlex color="accent">
+                    <mat-label>Beschreibung</mat-label>
+                    <input matInput type="text" formControlName="description">
+                </mat-form-field>
+
+            </div>
+        </mat-card-content>
+
+        <mat-card-actions>
+            <button mat-button color="primary" *ngIf="!stationId">Erstellen</button>
+            <button mat-button type="button" (click)="deleteStation()" *ngIf="stationId" color="warn">Löschen</button>
+        </mat-card-actions>
+    </mat-card>
+</form>

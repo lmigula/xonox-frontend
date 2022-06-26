@@ -1,0 +1,66 @@
+<mat-card fxFill class="data-card" fxLayout="column">
+    <mat-card-header>
+        <mat-card-title>
+            <div fxLayout="row">
+                <span fxFlex="initial" class="headerButtonSmall">Stationen
+
+
+                </span>
+
+
+            </div>
+
+        </mat-card-title>
+    </mat-card-header>
+    <mat-card-content fxFlex fxLayout="column" fxLayoutGap="5px">
+        <div fxLayout="row">
+            <div fxFlex="initial">
+                <a routerLink="/detail" mat-raised-button color="primary">neue Station</a>
+            </div>
+
+        </div>
+        <mat-table fxFlex class="data-table" [dataSource]="dataSource" matSort matSortDisableClear="true"
+            matSortActive="date" matSortDirection="desc">
+            <ng-container matColumnDef="id">
+                <th mat-header-cell *matHeaderCellDef title="ID"> ID </th>
+                <td mat-cell *matCellDef="let element"> {{element.id}}
+                </td>
+            </ng-container>
+
+            <ng-container matColumnDef="name">
+                <th mat-header-cell *matHeaderCellDef mat-sort-header="name"> Name </th>
+                <td mat-cell *matCellDef="let element"> {{element.name}}
+                </td>
+            </ng-container>
+            <ng-container matColumnDef="description">
+                <th mat-header-cell *matHeaderCellDef mat-sort-header="description"> Beschreibung </th>
+                <td mat-cell *matCellDef="let element"> {{element.description}}
+                </td>
+            </ng-container>
+            <ng-container matColumnDef="stream">
+                <th mat-header-cell *matHeaderCellDef mat-sort-header="stream"> Stream </th>
+                <td mat-cell *matCellDef="let element"> {{element.stream}}
+                </td>
+            </ng-container>
+            <ng-container matColumnDef="action">
+                <th mat-header-cell *matHeaderCellDef> </th>
+                <td mat-cell *matCellDef="let element">
+                    <a mat-list-item [routerLink]="'/detail/' + element.id" routerLinkActive="active"
+                        [routerLinkActiveOptions]="{exact:true}">
+                        <mat-icon color="primary">link</mat-icon>
+                    </a>
+                </td>
+            </ng-container>
+
+
+            <tr mat-header-row *matHeaderRowDef="displayedColumns; sticky: true"></tr>
+            <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+        </mat-table>
+        <mat-paginator #paginator pageSize="50" [pageSizeOptions]="[ 25, 50, 100]">
+
+        </mat-paginator>
+        <div class="loading">
+            <mat-spinner class="spinner" *ngIf="loading" color="accent" diameter="25"></mat-spinner>
+        </div>
+    </mat-card-content>
+</mat-card>

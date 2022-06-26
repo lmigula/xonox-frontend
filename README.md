@@ -1,5 +1,13 @@
 # XonoxFront
 
+In June 2022, Noxon(tm) decided to discontinue the infrastructure-services for legacy iRadio series devices.
+
+`xonox` is an alternative for these infrastructure-services that you can easily host at home.
+- [`xonox` at PyPI](https://pypi.org/project/xonox)
+
+This is an early draft of an Web-Frontend to make configuration easier.
+
+
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 14.0.3.
 
 ## Development server

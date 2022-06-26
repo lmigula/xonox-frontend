@@ -1,1 +1,41 @@
+@use '@angular/material' as mat;
+@import "@angular/material/theming";
+@import "./theme.scss";
+@include mat.all-component-typographies($typography);
+@include mat.all-component-themes($theme);
+
+$config: mat-get-color-config($theme);
+$typo: mat-get-typography-config($typography);
+$primary: map-get($config, primary);
+$accent: map-get($config, accent);
+
+
+
 /* You can add global styles to this file, and also import other style files */
+
+html,
+body {
+    height: 100%;
+}
+
+body {
+    margin: 0;
+    font-family: Roboto, "Helvetica Neue", sans-serif;
+}
+
+
+.content {
+    margin: 16px;
+}
+
+.margin-bottom {
+    margin-bottom: 16px;
+}
+
+.margin-top {
+    margin-top: 16px;
+}
+
+.hector {
+    color: #F3DD06;
+}

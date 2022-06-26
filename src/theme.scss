@@ -1,0 +1,107 @@
+@use '@angular/material' as mat;
+@import "@angular/material/theming";
+@include mat.core();
+
+$primary: (
+    Main: #6d6d6d,
+    Light: #9c9c9c,
+    Dark: #424242,
+    contrast: (Main: #fff,
+        Light: #fff,
+        Dark: #fff,
+    ),
+
+);
+$accent: (
+    Main: #F3DD06,
+    Light: #f4e01f,
+    Dark: #d6c205,
+    contrast: (Main: #000,
+        Light: #000,
+        Dark: #000,
+    ),
+);
+$warn: (
+    Main: #c40e20,
+    Light: #fe5149,
+    Dark: #8b0000,
+    contrast: (Main: #000,
+        Light: #000,
+        Dark: #000,
+    ),
+);
+$foreground: (
+    base: black,
+    divider: $dark-dividers,
+    dividers: $dark-dividers,
+    disabled: $dark-disabled-text,
+    disabled-button: rgba(black, 0.26),
+    disabled-text: $dark-disabled-text,
+    elevation: black,
+    hint-text: $dark-disabled-text,
+    secondary-text: $dark-secondary-text,
+    icon: rgba(black, 0.54),
+    icons: rgba(black, 0.54),
+    text: rgba(black, 0.87),
+    slider-min: rgba(black, 0.87),
+    slider-off: rgba(black, 0.26),
+    slider-off-active: rgba(black, 0.38),
+);
+$background: (
+    status-bar: map_get(mat.$grey-palette, 300),
+    app-bar: white,
+    background: white,
+    hover: rgba(black, 0.04),
+    card: white,
+    dialog: white,
+    disabled-button: rgba(black, 0.12),
+    raised-button: white,
+    focused-button: $dark-focused,
+    selected-button: map_get(mat.$grey-palette, 300),
+    selected-disabled-button: map_get(mat.$grey-palette, 400),
+    disabled-button-toggle: map_get(mat.$grey-palette, 200),
+    unselected-chip: map_get(mat.$grey-palette, 300),
+    disabled-list-option: map_get(mat.$grey-palette, 200),
+    tooltip: map_get(mat.$grey-palette, 700),
+);
+$primary-palette: mat.define-palette($primary, Main, Light, Dark, Main);
+$accent-palette: mat.define-palette($accent, Main, Light, Dark, Main);
+$warn-palette: mat.define-palette($warn, Main, Light, Dark, Main);
+
+@function create-theme($primary, $accent, $warn) {
+    @return (primary: $primary,
+        accent: $accent,
+        warn: $warn,
+        is-dark: false,
+        foreground: $foreground,
+        background: $background );
+}
+
+$theme: create-theme($primary-palette, $accent-palette, $warn-palette);
+
+$typography: mat.define-typography-config($font-family: "Lato, sans-serif !important",
+        $display-4: mat.define-typography-level(112px, 112px, 300, $letter-spacing: -0.05em),
+        // .mat-display-4
+        $display-3: mat.define-typography-level(56px, 56px, 400, $letter-spacing: -0.02em),
+        // .mat-display-3
+        $display-2: mat.define-typography-level(45px, 48px, 400, $letter-spacing: -0.005em),
+        // .mat-display-2
+        $display-1: mat.define-typography-level(34px, 40px, 400),
+        // .mat-display-1
+        $headline: mat.define-typography-level(24px, 32px, 400),
+        // .mat-headline
+        $title: mat.define-typography-level(20px, 32px, 500),
+        // .mat-title
+        $subheading-2: mat.define-typography-level(16px, 28px, 400),
+        // .mat-subheading-2
+        $subheading-1: mat.define-typography-level(15px, 24px, 400),
+        // .mat-subheading-1
+        $body-2: mat.define-typography-level(14px, 24px, 500),
+        // .mat-body-2
+        $body-1: mat.define-typography-level(14px, 20px, 400),
+        // .mat-body-1
+        $caption: mat.define-typography-level(12px, 20px, 400),
+        // .mat-small
+        $button: mat.define-typography-level(14px, 14px, 500),
+        $input: mat.define-typography-level(inherit, 1.125, 400),
+    );
