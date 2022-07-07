@@ -19,11 +19,22 @@
                 <mat-form-field fxFlex color="accent">
                     <mat-label>Name</mat-label>
                     <input matInput type="text" formControlName="name">
+
+                    <div *ngIf="stationForm.get('name')?.touched && stationForm.get('name')?.invalid"
+                        class="alert alert-danger">
+                        <div *ngIf="getError('name','required')">Der Name wird benötigt</div>
+                    </div>
                 </mat-form-field>
                 <mat-form-field fxFlex color="accent">
                     <mat-label>stream Url</mat-label>
                     <input matInput type="text" formControlName="streamUrl">
+                    <div *ngIf="stationForm.get('streamUrl')?.touched && stationForm.get('streamUrl')?.invalid"
+                        class="alert alert-danger">
+                        <div *ngIf="getError('streamUrl','required')">Die url wird benötigt</div>
+                        <div *ngIf=" getError('streamUrl','pattern')">Es wird eine http Url benötigt</div>
+                    </div>
                 </mat-form-field>
+
 
             </div>
             <div fxLayout="row" fxLayoutAlign="start center" fxLayoutGap="10px">
@@ -36,8 +47,9 @@
         </mat-card-content>
 
         <mat-card-actions>
-            <button mat-button color="primary" *ngIf="!stationId">Erstellen</button>
-            <button mat-button type="button" (click)="deleteStation()" *ngIf="stationId" color="warn">Löschen</button>
+            <button mat-raised-button color="primary" *ngIf="!stationId">Erstellen</button>
+            <button mat-raised-button type="button" (click)="deleteStation()" *ngIf="stationId"
+                color="warn">Löschen</button>
         </mat-card-actions>
     </mat-card>
 </form>

@@ -10,11 +10,14 @@ import { BackendService } from 'src/app/services/backend.service';
 })
 export class StationComponent implements OnInit {
 
+  regExPattern = /^(http):\/\/[^\s$.?#].[^\s]*$/;
+
   stationId!: string;
   station: any;
   stationForm: FormGroup = this.formBuilder.group({
     name: ['', [Validators.required]],
-    streamUrl: ['', [Validators.required]],
+    streamUrl: ['', [Validators.required,
+    Validators.pattern(this.regExPattern)]],
     description: ['',],
 
   });
@@ -51,6 +54,14 @@ export class StationComponent implements OnInit {
   ngOnInit(): void {
   }
 
+  getError(controlName: string, type: string) {
+    let error = this.stationForm.get(controlName)?.errors
+    let result = false;
+    if (error) {
+      result = error[type];
+    }
+    return result;
+  }
 
   deleteStation() {
     this.backendService.deleteStation(this.stationId)
