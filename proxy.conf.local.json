@@ -1,6 +1,6 @@
 {
     "/station": {
-        "target": "http://gatekeeper.my-noxon.net/station",
+        "target": "http://localhost:8000/station",
         "secure": false,
         "logLevel": "debug",
         "changeOrigin": true,
